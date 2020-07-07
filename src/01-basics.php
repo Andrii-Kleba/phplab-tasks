@@ -12,11 +12,11 @@
  */
 function getMinuteQuarter(int $minute)
 {
-    if ($minute < 0 || $minute > 60) {
+    if ($minute < 0 || $minute >= 61) {
         throw new InvalidArgumentException("This is not correctly $minute.\nWe expected number range from 0 to 60");
     }
     switch ($minute) {
-        case $minute > 0 && $minute <= 15;
+        case $minute >= 0 && $minute <= 15;
             echo 'first';
             break;
         case $minute >= 16 && $minute <= 30;
@@ -44,6 +44,15 @@ function getMinuteQuarter(int $minute)
  */
 function isLeapYear(int $year)
 {
+    if ($year < 1900) {
+        throw new InvalidArgumentException("This year is not valid.\nWe expected more year than $year");
+    }
+
+    if ($year % 400 == 0 || $year % 4 == 0) {
+        return true;
+    } else {
+        return false;
+    }
 }
 
 /**

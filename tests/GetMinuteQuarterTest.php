@@ -33,7 +33,7 @@ class GetMinuteQuarterTest extends TestCase
             [45, 'third'],
             [46, 'fourth'],
             [50, 'fourth'],
-            [60, 'fourth'],
+            [0, 'fourth'],
         ];
     }
 }

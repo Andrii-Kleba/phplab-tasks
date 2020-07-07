@@ -17,16 +17,16 @@ function getMinuteQuarter(int $minute)
     }
     switch ($minute) {
         case $minute >= 0 && $minute <= 15;
-            echo 'first';
+            return 'first';
             break;
         case $minute >= 16 && $minute <= 30;
-            echo 'second';
+            return 'second';
             break;
         case $minute >= 31 && $minute <= 45;
-            echo 'third';
+            return 'third';
             break;
         case $minute >= 46 && $minute <= 60;
-            echo 'fourth';
+            return 'fourth';
             break;
     }
 }

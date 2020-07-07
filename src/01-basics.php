@@ -6,12 +6,29 @@
  * Throw InvalidArgumentException if $minute is negative of greater then 60.
  * @see https://www.php.net/manual/en/class.invalidargumentexception.php
  *
- * @param  int  $minute
+ * @param int $minute
  * @return string
  * @throws InvalidArgumentException
  */
 function getMinuteQuarter(int $minute)
 {
+    if ($minute < 0 || $minute > 60) {
+        throw new InvalidArgumentException('This is not correctly number.\nWe expected number  range from 0 to 60');
+    }
+    switch ($minute) {
+        case $minute > 0 && $minute <= 15;
+            echo "first";
+            break;
+        case $minute >= 16 && $minute <= 30;
+            echo "second";
+            break;
+        case $minute >= 31 && $minute <= 45;
+            echo "third";
+            break;
+        case $minute >= 46 && $minute <= 60;
+            echo "fourth";
+            break;
+    }
 }
 
 /**
@@ -21,7 +38,7 @@ function getMinuteQuarter(int $minute)
  * @see https://en.wikipedia.org/wiki/Leap_year
  * @see https://www.php.net/manual/en/class.invalidargumentexception.php
  *
- * @param  int  $year
+ * @param int $year
  * @return boolean
  * @throws InvalidArgumentException
  */
@@ -36,7 +53,7 @@ function isLeapYear(int $year)
  * Throw InvalidArgumentException if $input contains more then 6 digits.
  * @see https://www.php.net/manual/en/class.invalidargumentexception.php
  *
- * @param  string  $input
+ * @param string $input
  * @return boolean
  * @throws InvalidArgumentException
  */

@@ -68,4 +68,15 @@ function isLeapYear(int $year)
  */
 function isSumEqual(string $input)
 {
+    if (strlen($input) > 6 || strlen($input) < 6) {
+        throw new InvalidArgumentException("String $input  length more than 6 chars.\nWe expected 6 chars but not less");
+    }
+    $numbers = str_split($input);
+    $firstDigits = array_slice($numbers, 0, 3);
+    $secondDigits = array_slice($numbers, -3);
+    if (array_sum($firstDigits) === array_sum($secondDigits)) {
+        return true;
+    } else {
+        return false;
+    }
 }

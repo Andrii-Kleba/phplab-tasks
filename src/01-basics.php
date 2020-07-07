@@ -13,20 +13,20 @@
 function getMinuteQuarter(int $minute)
 {
     if ($minute < 0 || $minute > 60) {
-        throw new InvalidArgumentException('This is not correctly number.\nWe expected number  range from 0 to 60');
+        throw new InvalidArgumentException("This is not correctly $minute.\nWe expected number range from 0 to 60");
     }
     switch ($minute) {
         case $minute > 0 && $minute <= 15;
-            echo "first";
+            echo 'first';
             break;
         case $minute >= 16 && $minute <= 30;
-            echo "second";
+            echo 'second';
             break;
         case $minute >= 31 && $minute <= 45;
-            echo "third";
+            echo 'third';
             break;
         case $minute >= 46 && $minute <= 60;
-            echo "fourth";
+            echo 'fourth';
             break;
     }
 }

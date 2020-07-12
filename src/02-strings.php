@@ -27,9 +27,19 @@ function snakeCaseToCamelCase(string $input): string
  * @param string $input
  * @return string
  */
-function mirrorMultibyteString(string $input)
+function mirrorMultibyteString(string $input): string
 {
+    $charRev = "";
+    $wordRev = "";
+    for ($i = mb_strlen($input); $i >= 0; $i--) {
+        $charRev .= mb_substr($input, $i, 1);
+    }
+    $arrStr = explode(" ", $charRev);
+    for ($j = count($arrStr) - 1; $j >= 0; $j--) {
+        $wordRev .= $arrStr[$j] . " ";
+    }
 
+    return rtrim($wordRev);
 }
 
 /**

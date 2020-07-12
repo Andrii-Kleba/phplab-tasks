@@ -56,6 +56,20 @@ function mirrorMultibyteString(string $input): string
  * @param string $noun
  * @return string
  */
+
 function getBrandName(string $noun)
 {
+    $charArrBrandName = str_split($noun);
+    $resultBrandName = "The ";
+    if (strtolower($charArrBrandName[0]) != strtolower(end($charArrBrandName))) {
+        $res = implode($charArrBrandName);
+        $resultBrandName .= ucfirst($res);
+    } elseif (strtolower($charArrBrandName[0]) == strtolower(end($charArrBrandName))) {
+        $res = implode($charArrBrandName);
+        $firstCharUpper = ucfirst($res);
+        $splitStr = strstr($res, $charArrBrandName[1]);
+        $resultBrandName = $firstCharUpper . $splitStr;
+    }
+
+    return $resultBrandName;
 }

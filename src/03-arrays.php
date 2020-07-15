@@ -68,4 +68,16 @@ function getUniqueValue(array $input): int
  */
 function groupByTag(array $input)
 {
+    $arr = [];
+    foreach ($input as $key) {
+        $i = 0;
+        while ($i < count($key['tags'])) {
+            $arr[] .= $key['tags'][$i];
+            $i++;
+        }
+    }
+    $uniqArray = array_unique($arr);
+    sort($uniqArray);
+    print_r($uniqArray);
+
 }

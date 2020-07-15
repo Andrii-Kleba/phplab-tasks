@@ -8,8 +8,18 @@
  * @param array $input
  * @return array
  */
-function repeatArrayValues(array $input)
+function repeatArrayValues(array $input): array
 {
+    $arr = [];
+    foreach ($input as $n) {
+        $i = 0;
+        while ($i < $n) {
+            $arr[] .= $n;
+            $i++;
+        }
+    }
+
+    return $arr;
 }
 
 /**
@@ -24,7 +34,7 @@ function getUniqueValue(array $input): int
 {
     $arrayCopies = array_unique(array_diff_assoc($input, array_unique($input)));
     $arrayWithoutCopies = array_diff($input, $arrayCopies);
-    if (empty($input) || empty($arrayWithoutCopies)) {
+    if (empty($input) or empty($arrayWithoutCopies)) {
         $result = 0;
     } else {
         $result = min($arrayWithoutCopies);

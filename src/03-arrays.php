@@ -14,7 +14,7 @@ function repeatArrayValues(array $input): array
     foreach ($input as $n) {
         $i = 0;
         while ($i < $n) {
-            $arr[] .= $n;
+            $arr[] += $n;
             $i++;
         }
     }

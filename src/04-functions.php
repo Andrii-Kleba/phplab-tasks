@@ -17,7 +17,7 @@ function sayHello(): string
  * @param $arg
  * @return string
  */
-function sayHelloArgument($arg)
+function sayHelloArgument($arg): string
 {
     return "Hello $arg";
 }
@@ -33,9 +33,14 @@ function sayHelloArgument($arg)
  * @return string
  * @throws InvalidArgumentException
  */
-function sayHelloArgumentWrapper($arg)
+function sayHelloArgumentWrapper($arg): string
 {
-    // put your code here
+    if (
+    !(is_numeric($arg) && is_string($arg) && is_bool($arg))
+    ) {
+        throw  new InvalidArgumentException('You arguments is not valid.Need number, string or bool');
+    }
+
 
     return sayHelloArgument($arg);
 }
@@ -46,7 +51,7 @@ function sayHelloArgumentWrapper($arg)
  *
  * @return array
  */
-function countArguments()
+function countArguments(): array
 {
     return [
         'argument_count' => func_num_args(),

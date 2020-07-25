@@ -72,7 +72,13 @@ function countArguments(): array
  * @return array
  * @throws InvalidArgumentException
  */
-function countArgumentsWrapper()
+function countArgumentsWrapper(...$arg): array
 {
-    // put your code here
+    for ($i = 0; $i < count($arg); $i++) {
+        if (!is_string($arg[$i])) {
+            throw new InvalidArgumentException("$arg[$i] is not string,You need to pass string Argument");
+        }
+    }
+
+    return countArguments($arg);
 }

@@ -38,7 +38,7 @@ function filteringAirportByFirstLetter($airports, $letter)
 }
 
 
-function filterAirportByState($airports)
+function sortTableInfoByColumn($airports)
 {
     $str = explode('=', $_SERVER['QUERY_STRING']);
 

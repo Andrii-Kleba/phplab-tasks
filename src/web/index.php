@@ -17,7 +17,7 @@ if (isset($_GET['filter_by_first_letter'])) {
 }
 
 if (isset($_GET['sort'])) {
-    $airports = filterAirportByState($airports);
+    $airports = sortTableInfoByColumn($airports);
 }
 
 

@@ -13,7 +13,7 @@ function getUniqueFirstLetters(array $airports)
 {
     $lettersAirports = [];
     foreach ($airports as $airport) {
-        $lettersAirports[] = ucfirst($airport[name][0]);
+        $lettersAirports[] = ucfirst($airport['name'][0]);
     }
 
     $result = array_unique($lettersAirports);
@@ -22,3 +22,31 @@ function getUniqueFirstLetters(array $airports)
 
     return $result;
 }
+
+
+function filteringAirportByFirstLetter($airports, $letter)
+{
+    $newArr = [];
+    foreach ($airports as $air) {
+        if ($air['name'][0] === $letter) {
+            $newArr[] = $air;
+        }
+    }
+    return $newArr;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

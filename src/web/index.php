@@ -8,8 +8,14 @@ $airports = require './airports.php';
  * Here you need to check $_GET request if it has any filtering
  * and apply filtering by First Airport Name Letter and/or Airport State
  * (see Filtering tasks 1 and 2 below)
+ * @param $airport
  */
-echo $_GET['filter_by_first_letter'];
+if (isset($_GET['filter_by_first_letter'])) {
+    $letter = $_GET['filter_by_first_letter'];
+    $airports = filteringAirportByFirstLetter($airports, $letter);
+}
+
+
 
 // Sorting
 /**
@@ -122,6 +128,7 @@ echo $_GET['filter_by_first_letter'];
             <li class="page-item"><a class="page-link" href="#">3</a></li>
         </ul>
     </nav>
+
 
 </main>
 </html>

@@ -40,12 +40,9 @@ function filteringAirportByFirstLetter($airports, $letter)
 
 function filterAirportByState($airports)
 {
-    $arr = [];
-    $arr = array_column($airports, 'state');
-    sort($arr);
-
-    print_r($arr);
-//    return $arr;
+    $stateColumn = array_column($airports, 'state');
+    array_multisort($stateColumn, SORT_ASC, $airports);
+    return $airports;
 }
 
 

@@ -20,7 +20,7 @@ if (isset($_GET['sort'])) {
     $airports = filterAirportByState($airports);
 }
 
-//echo "$_SERVER[QUERY_STRING]";
+
 
 
 // Sorting
@@ -87,10 +87,10 @@ if (isset($_GET['sort'])) {
     <table class="table">
         <thead>
         <tr>
-            <th scope="col"><a href="#">Name</a></th>
-            <th scope="col"><a href="#">Code</a></th>
+            <th scope="col"><a href="/?sort=name">Name</a></th>
+            <th scope="col"><a href="/?sort=code">Code</a></th>
             <th scope="col"><a href="/?sort=state">State</a></th>
-            <th scope="col"><a href="#">City</a></th>
+            <th scope="col"><a href="/?sort=city">City</a></th>
             <th scope="col">Address</th>
             <th scope="col">Timezone</th>
         </tr>

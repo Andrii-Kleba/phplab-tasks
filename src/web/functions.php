@@ -24,7 +24,7 @@ function getUniqueFirstLetters(array $airports)
 }
 
 
-function filteringAirportByFirstLetter($airports, $letter)
+function filteringAirportsByFirstLetter($airports, $letter)
 {
     $newArr = [];
     foreach ($airports as $air) {
@@ -44,9 +44,16 @@ function sortTableInfoByColumn($airports)
 
     $stateColumn = array_column($airports, $str[1]);
     array_multisort($stateColumn, SORT_ASC, $airports);
+
     return $airports;
 }
 
+
+function paginationPage($page, $airports)
+{
+    $limit = 5;
+    echo $_SERVER['DOCUMENT_ROOT'];
+}
 
 
 

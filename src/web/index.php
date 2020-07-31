@@ -13,15 +13,8 @@ $airports = require './airports.php';
  */
 if (isset($_GET['filter_by_first_letter'])) {
     $letter = $_GET['filter_by_first_letter'];
-    $airports = filteringAirportByFirstLetter($airports, $letter);
+    $airports = filteringAirportsByFirstLetter($airports, $letter);
 }
-
-if (isset($_GET['sort'])) {
-    $airports = sortTableInfoByColumn($airports);
-}
-
-
-
 
 // Sorting
 /**
@@ -30,6 +23,9 @@ if (isset($_GET['sort'])) {
  * (see Sorting task below)
  */
 
+if (isset($_GET['sort'])) {
+    $airports = sortTableInfoByColumn($airports);
+}
 
 // Pagination
 /**
@@ -37,6 +33,11 @@ if (isset($_GET['sort'])) {
  * and apply pagination logic
  * (see Pagination task below)
  */
+
+$page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+//echo $perPage = isset($_GET['per-page']) && $_GET['per-page'] <= 25 ? (int)$_GET['per-page'] : 5;
+array_chunk($airports, 2);
+
 ?>
 <!doctype html>
 <html lang="en">
@@ -130,9 +131,9 @@ if (isset($_GET['sort'])) {
     -->
     <nav aria-label="Navigation">
         <ul class="pagination justify-content-center">
-            <li class="page-item active"><a class="page-link" href="#">1</a></li>
-            <li class="page-item"><a class="page-link" href="#">2</a></li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item active"><a class="page-link" href="/?page=1">1</a></li>
+            <li class="page-item"><a class="page-link" href="/?page=2">2</a></li>
+            <li class="page-item"><a class="page-link" href="/?page=3">3</a></li>
         </ul>
     </nav>
 

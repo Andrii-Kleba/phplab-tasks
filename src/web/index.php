@@ -3,6 +3,7 @@ require_once './functions.php';
 
 $airports = require './airports.php';
 
+
 // Filtering
 /**
  * Here you need to check $_GET request if it has any filtering
@@ -15,6 +16,11 @@ if (isset($_GET['filter_by_first_letter'])) {
     $airports = filteringAirportByFirstLetter($airports, $letter);
 }
 
+if (isset($_GET['sort'])) {
+    $airports = filterAirportByState($airports);
+}
+
+//echo "$_SERVER[QUERY_STRING]";
 
 
 // Sorting
@@ -23,6 +29,7 @@ if (isset($_GET['filter_by_first_letter'])) {
  * and apply sorting
  * (see Sorting task below)
  */
+
 
 // Pagination
 /**
@@ -82,7 +89,7 @@ if (isset($_GET['filter_by_first_letter'])) {
         <tr>
             <th scope="col"><a href="#">Name</a></th>
             <th scope="col"><a href="#">Code</a></th>
-            <th scope="col"><a href="#">State</a></th>
+            <th scope="col"><a href="/?sort=state">State</a></th>
             <th scope="col"><a href="#">City</a></th>
             <th scope="col">Address</th>
             <th scope="col">Timezone</th>

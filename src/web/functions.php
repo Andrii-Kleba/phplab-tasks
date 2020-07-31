@@ -32,11 +32,21 @@ function filteringAirportByFirstLetter($airports, $letter)
             $newArr[] = $air;
         }
     }
+
+
     return $newArr;
 }
 
 
+function filterAirportByState($airports)
+{
+    $arr = [];
+    $arr = array_column($airports, 'state');
+    sort($arr);
 
+    print_r($arr);
+//    return $arr;
+}
 
 
 

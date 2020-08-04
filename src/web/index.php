@@ -39,13 +39,11 @@ if (isset($_GET['sort'])) {
  * (see Pagination task below)
  */
 
-//$page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
-//
-//$airports = paginationPage($page, $airports);
+$perPage = 5;
+$pages = ceil(count($airports) / $perPage);
+$page = $_GET['page'] ?? 1;
 
-//echo $perPage = isset($_GET['per-page']) && $_GET['per-page'] <= 25 ? (int)$_GET['per-page'] : 5;
-//array_chunk($airports, 2);
-
+$airports = array_slice($airports, $page - 1, $perPage);
 
 ?>
 <!doctype html>
@@ -140,9 +138,13 @@ if (isset($_GET['sort'])) {
     -->
     <nav aria-label="Navigation">
         <ul class="pagination justify-content-center">
-            <li class="page-item active"><a class="page-link" href="/?page=1">1</a></li>
-            <li class="page-item"><a class="page-link" href="/?page=2">2</a></li>
-            <li class="page-item"><a class="page-link" href="/?page=3">3</a></li>
+            <!--            for($i = max(1, $currentPage - 5); $i <= min($currentPage + 5, $allPages); $i++)-->
+            <?php for ($i = 1; $i <= $pages; $i++): ?>
+                <li class="page-item <?= $page == $i ? 'active' : '' ?>">
+                    <a class="page-link"
+                       href="/?<?= http_build_query(array_merge($_GET, ['page' => $i])) ?>"><?= $i ?></a>
+                </li>
+            <?php endfor ?>
         </ul>
     </nav>
 

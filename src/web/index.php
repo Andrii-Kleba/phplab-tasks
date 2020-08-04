@@ -43,8 +43,12 @@ $perPage = 5;
 $pages = ceil(count($airports) / $perPage);
 $page = $_GET['page'] ?? 1;
 
-$startPage = max($page > 5 ? page - 2 : $page, $page - $perPage);
+$startPage = max($page > 5 ? page - 2 : $page,  $page - $perPage);
 $endPage = min($page + 5, $pages);
+
+if ($page < 5) {
+    $pages - $page;
+}
 
 $airports = array_slice($airports, ($page - 1) * $perPage, $perPage);
 

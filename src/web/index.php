@@ -24,7 +24,11 @@ if (isset($_GET['filter_by_first_letter'])) {
  */
 
 if (isset($_GET['sort'])) {
-    $airports = sortTableInfoByColumn($airports);
+    $str = $_SERVER['QUERY_STRING'];
+    preg_match('/sort=[a-z]*/', $str, $arrSort);
+    $column = substr($arrSort[0], 5);
+
+    $airports = sortTableInfoByColumn($airports, $column);
 }
 
 // Pagination
@@ -34,9 +38,13 @@ if (isset($_GET['sort'])) {
  * (see Pagination task below)
  */
 
-$page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+//$page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+//
+//$airports = paginationPage($page, $airports);
+
 //echo $perPage = isset($_GET['per-page']) && $_GET['per-page'] <= 25 ? (int)$_GET['per-page'] : 5;
-array_chunk($airports, 2);
+//array_chunk($airports, 2);
+
 
 ?>
 <!doctype html>
@@ -88,10 +96,10 @@ array_chunk($airports, 2);
     <table class="table">
         <thead>
         <tr>
-            <th scope="col"><a href="/?sort=name">Name</a></th>
-            <th scope="col"><a href="/?sort=code">Code</a></th>
-            <th scope="col"><a href="/?sort=state">State</a></th>
-            <th scope="col"><a href="/?sort=city">City</a></th>
+            <th scope="col"><a href="/?<?= http_build_query(array_merge($_GET, ['sort' => 'name'])) ?>">Name</a></th>
+            <th scope="col"><a href="/?<?= http_build_query(array_merge($_GET, ['sort' => 'code'])) ?>">Code</a></th>
+            <th scope="col"><a href="/?<?= http_build_query(array_merge($_GET, ['sort' => 'state'])) ?>">State</a></th>
+            <th scope="col"><a href="/?<?= http_build_query(array_merge($_GET, ['sort' => 'city'])) ?>">City</a></th>
             <th scope="col">Address</th>
             <th scope="col">Timezone</th>
         </tr>

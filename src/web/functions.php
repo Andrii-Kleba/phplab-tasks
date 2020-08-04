@@ -38,22 +38,15 @@ function filteringAirportsByFirstLetter($airports, $letter)
 }
 
 
-function sortTableInfoByColumn($airports)
+function sortTableInfoByColumn($airports, $column)
 {
-    $str = explode('=', $_SERVER['QUERY_STRING']);
-
-    $stateColumn = array_column($airports, $str[1]);
+    $stateColumn = array_column($airports, $column);
     array_multisort($stateColumn, SORT_ASC, $airports);
 
     return $airports;
 }
 
 
-function paginationPage($page, $airports)
-{
-    $limit = 5;
-    echo $_SERVER['DOCUMENT_ROOT'];
-}
 
 
 

@@ -24,6 +24,7 @@ if (isset($_GET['filter_by_first_letter'])) {
  */
 
 if (isset($_GET['sort'])) {
+//    I know about $_GET['sort']; :)
     $str = $_SERVER['QUERY_STRING'];
     preg_match('/sort=[a-z]*/', $str, $arrSort);
     $column = substr($arrSort[0], 5);

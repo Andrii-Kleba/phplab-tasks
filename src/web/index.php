@@ -43,7 +43,10 @@ $perPage = 5;
 $pages = ceil(count($airports) / $perPage);
 $page = $_GET['page'] ?? 1;
 
-$airports = array_slice($airports, $page - 1, $perPage);
+$startPage = max($page > 5 ? page - 2 : $page, $page - $perPage);
+$endPage = min($page + 5, $pages);
+
+$airports = array_slice($airports, ($page - 1) * $perPage, $perPage);
 
 ?>
 <!doctype html>
@@ -118,7 +121,9 @@ $airports = array_slice($airports, $page - 1, $perPage);
             <tr>
                 <td><?= $airport['name'] ?></td>
                 <td><?= $airport['code'] ?></td>
-                <td><a href="#"><?= $airport['state'] ?></a></td>
+                <td>
+                    <a href="/?<?= http_build_query(array_merge($_GET, ['sort' => 'state'])) ?>"><?= $airport['state'] ?></a>
+                </td>
                 <td><?= $airport['city'] ?></td>
                 <td><?= $airport['address'] ?></td>
                 <td><?= $airport['timezone'] ?></td>
@@ -139,7 +144,7 @@ $airports = array_slice($airports, $page - 1, $perPage);
     <nav aria-label="Navigation">
         <ul class="pagination justify-content-center">
             <!--            for($i = max(1, $currentPage - 5); $i <= min($currentPage + 5, $allPages); $i++)-->
-            <?php for ($i = 1; $i <= $pages; $i++): ?>
+            <?php for ($i = $startPage; $i <= $endPage; $i++): ?>
                 <li class="page-item <?= $page == $i ? 'active' : '' ?>">
                     <a class="page-link"
                        href="/?<?= http_build_query(array_merge($_GET, ['page' => $i])) ?>"><?= $i ?></a>

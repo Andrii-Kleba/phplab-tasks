@@ -16,6 +16,11 @@ if (isset($_GET['filter_by_first_letter'])) {
     $airports = filteringAirportsByFirstLetter($airports, $letter);
 }
 
+if (isset($_GET['filter_by_state'])) {
+    $state = $_GET['filter_by_state'];
+    $airports = filteringAirportsByState($airports, $state);
+}
+
 // Sorting
 /**
  * Here you need to check $_GET request if it has sorting key
@@ -43,12 +48,9 @@ $perPage = 5;
 $pages = ceil(count($airports) / $perPage);
 $page = $_GET['page'] ?? 1;
 
-$startPage = max($page > 5 ? page - 2 : $page,  $page - $perPage);
+$startPage = max($page > 5 ? page - 1 : $page, $page - $perPage);
 $endPage = min($page + 5, $pages);
 
-if ($page < 5) {
-    $pages - $page;
-}
 
 $airports = array_slice($airports, ($page - 1) * $perPage, $perPage);
 
@@ -126,7 +128,7 @@ $airports = array_slice($airports, ($page - 1) * $perPage, $perPage);
                 <td><?= $airport['name'] ?></td>
                 <td><?= $airport['code'] ?></td>
                 <td>
-                    <a href="/?<?= http_build_query(array_merge($_GET, ['sort' => 'state'])) ?>"><?= $airport['state'] ?></a>
+                    <a href="/?<?= http_build_query(array_merge($_GET, ['filter_by_state' => $airport['state']])) ?>"><?= $airport['state'] ?></a>
                 </td>
                 <td><?= $airport['city'] ?></td>
                 <td><?= $airport['address'] ?></td>

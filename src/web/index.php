@@ -29,12 +29,9 @@ if (isset($_GET['filter_by_state'])) {
  */
 
 if (isset($_GET['sort'])) {
-//    I know about $_GET['sort']; :)
-    $str = $_SERVER['QUERY_STRING'];
-    preg_match('/sort=[a-z]*/', $str, $arrSort);
-    $column = substr($arrSort[0], 5);
+    $str = $_GET['sort'];
 
-    $airports = sortTableInfoByColumn($airports, $column);
+    $airports = sortTableInfoByColumn($airports, $str);
 }
 
 // Pagination
@@ -48,11 +45,10 @@ $perPage = 5;
 $pages = ceil(count($airports) / $perPage);
 $page = $_GET['page'] ?? 1;
 
-$startPage = max($page > 5 ? page - 1 : $page, $page - $perPage);
+$startPage = max($page > 1 ? $page - 1 : $page, $page - $perPage);
 $endPage = min($page + 5, $pages);
 
-
-$airports = array_slice($airports, ($page - 1) * $perPage, $perPage);
+$airports = array_slice($airports, ($page - 1) * 5, $perPage);
 
 ?>
 <!doctype html>
@@ -128,7 +124,8 @@ $airports = array_slice($airports, ($page - 1) * $perPage, $perPage);
                 <td><?= $airport['name'] ?></td>
                 <td><?= $airport['code'] ?></td>
                 <td>
-                    <a href="/?<?= http_build_query(array_merge($_GET, ['filter_by_state' => $airport['state']])) ?>"><?= $airport['state'] ?></a>
+                    <a href="/?<?= http_build_query(array_merge($_GET, ['filter_by_state' => $airport['state']])) ?>"
+                    ><?= $airport['state'] ?></a>
                 </td>
                 <td><?= $airport['city'] ?></td>
                 <td><?= $airport['address'] ?></td>

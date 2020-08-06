@@ -39,25 +39,21 @@ function filteringAirportsByFirstLetter($airports, $letter)
 
 function filteringAirportsByState($airports, $state)
 {
-    $arr = [];
-    $arr = array_filter($airports, function ($k) use ($state) {
+    return array_filter($airports, function ($k) use ($state) {
         return $k['state'] == $state;
     });
-
-    return $arr;
 }
 
 
 function sortTableInfoByColumn($airports, $column)
 {
-//    if ($column == 'state') {
-//        return $airports;
-//    }
     $stateColumn = array_column($airports, $column);
     array_multisort($stateColumn, SORT_ASC, $airports);
 
     return $airports;
 }
+
+
 
 
 

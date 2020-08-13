@@ -146,7 +146,6 @@ $airports = array_slice($airports, ($page - 1) * 5, $perPage);
     -->
     <nav aria-label="Navigation">
         <ul class="pagination justify-content-center">
-            <!--            for($i = max(1, $currentPage - 5); $i <= min($currentPage + 5, $allPages); $i++)-->
             <?php for ($i = $startPage; $i <= $endPage; $i++): ?>
                 <li class="page-item <?= $page == $i ? 'active' : '' ?>">
                     <a class="page-link"

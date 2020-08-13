@@ -17,27 +17,14 @@ class GetUniqueFirstLettersTest extends TestCase
     {
         return [
             [[
-                [
-                    "name" => "Albuquerque Sunport International Airport",
-                ],
-                [
-                    "name" => "Baltimore Washington Airport",
-                ],
-                [
-                    "name" => "Charlotte Douglas International Airport",
-                ],
-                [
-                    "name" => "Dallas Love Field",
-                ],
-                [
-                    "name" => "Washington Ronald Reagan National Airport",
-                ],
-                [
-                    "name" => "Newark Liberty International Airport",
-                ],
+                ["name" => "Albuquerque Sunport International Airport",],
+                ["name" => "Baltimore Washington Airport",],
+                ["name" => "Charlotte Douglas International Airport",],
+                ["name" => "Dallas Love Field",],
+                ["name" => "Washington Ronald Reagan National Airport"],
+                ["name" => "Newark Liberty International Airport",],
             ]
-                , ['A', 'B', 'C', 'D', 'N', 'W']
-            ]
+                , ['A', 'B', 'C', 'D', 'N', 'W']]
         ];
     }
 }

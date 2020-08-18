@@ -53,4 +53,9 @@ class Request
             return array_merge($only, array_keys($request_array));
         }
     }
+
+    public function has($key): bool
+    {
+        echo in_array($key, array_keys($this->query)) || in_array($key, array_keys($this->request)) ? true : false;
+    }
 }

@@ -1,7 +1,4 @@
 <?php
-
-namespace \Request::class;
-
 require_once 'Request.php';
 ?>
 <!doctype html>
@@ -18,7 +15,6 @@ require_once 'Request.php';
 $_POST['lala'] = 323;
 $_POST['cool'] = 'COOL';
 $request = new Request($_GET, $_POST, $_SERVER);
-$request->ip();
 ?>
 </body>
 </html>

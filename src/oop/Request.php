@@ -1,12 +1,15 @@
 <?php
 
+namespace src\oop;
+
+
 class Request
 {
     public array $query;
     public array $request;
     public array $server;
 
-    public function __construct(array $query = [], array $request = [], ?array $server)
+    public function __construct(array $query, array $request, ?array $server)
     {
         $this->query = $query;
         $this->request = $request;
@@ -72,6 +75,11 @@ class Request
             $ip = $this->server['REMOTE_ADDR'];
         }
         echo $ip;
+    }
+
+    public function userAgent(): string
+    {
+        return $this->server['HTTP_USER_AGENT'];
     }
 
 }

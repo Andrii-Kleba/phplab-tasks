@@ -2,22 +2,37 @@
 
 class Request
 {
+    public array $query;
     public array $request;
-    public array $getRequest;
 
-    public function __construct(array $request, array $getRequest)
+    public function __construct(array $query, array $request)
     {
+        $this->query = $query;
         $this->request = $request;
-        $this->getRequest = $getRequest;
     }
 
-    public function query($key, $default = null)
+    public function query($key, $default = null): string
     {
-        return !empty($_GET[$key]) ? $_GET[$key] : $_GET[$default];
+        if (in_array($key, $_GET)) {
+            return $this->query[$key];
+        } else {
+            return $default;
+        }
     }
 
-    public function post($key, $default = null)
+    public function post($key, $default = null): string
     {
-        return !empty($_POST[$key]) ? $_POST[$key] : $_POST[$default];
+        if (in_array($key, $_POST)) {
+            return $this->request[$key];
+        } else {
+            return $default;
+        }
+    }
+
+    public function get($key, $default = null)
+    {
+        $param = $key;
+
+
     }
 }

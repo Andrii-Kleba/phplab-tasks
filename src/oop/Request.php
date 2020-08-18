@@ -44,4 +44,13 @@ class Request
         }
     }
 
+    public function all(array $only = []): array
+    {
+        $request_array = array_merge($this->request, $this->query);
+        if (empty($only)) {
+            return $request_array;
+        } else {
+            return array_merge($only, array_keys($request_array));
+        }
+    }
 }

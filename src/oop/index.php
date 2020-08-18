@@ -1,4 +1,7 @@
 <?php
+
+namespace \Request::class;
+
 require_once 'Request.php';
 ?>
 <!doctype html>
@@ -11,6 +14,12 @@ require_once 'Request.php';
     <title>Document</title>
 </head>
 <body>
-
+<?php
+$request = new Request($_GET, $_POST);
+echo $request->query("name", 'not in');
+if(in_array("name", $request->query)){
+    echo "dsdsdsdsdsdsddssd";
+}
+?>
 </body>
 </html>

@@ -11,28 +11,22 @@ class Request
         $this->request = $request;
     }
 
-    public function query($key, $default = null): string
+    public function query(string $key, $default = null)
     {
-        if (in_array($key, $_GET)) {
+        if (array_key_exists($key, $this->query)) {
             return $this->query[$key];
         } else {
             return $default;
         }
     }
 
-    public function post($key, $default = null): string
+    public function post(string $key, $default = null)
     {
-        if (in_array($key, $_POST)) {
+        if (array_key_exists($key, $this->request)) {
             return $this->request[$key];
         } else {
             return $default;
         }
     }
 
-    public function get($key, $default = null)
-    {
-        $param = $key;
-
-
-    }
 }

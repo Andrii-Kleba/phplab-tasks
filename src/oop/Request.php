@@ -34,14 +34,13 @@ class Request
         $get_array = array_keys($this->query);
         $post_array = array_keys($this->request);
 
-        if (in_array($key, $get_array) && in_array($key, $post_array)) {
+        if (in_array($key, $get_array) && !in_array($key, $post_array)) {
+            return $this->query[$key] . "GET";
+        } else if (in_array($key, $post_array) && !in_array($key, $get_array)
+            || (in_array($key, $post_array) && in_array($key, $get_array))) {
             return $this->request[$key] . "POST";
-        } elseif (in_array($key, $get_array) && !in_array($key, $post_array)) {
-            return $this->query[$key];
-        } elseif (!in_array($key, $get_array) && in_array($key, $post_array)) {
-            return $this->request[$key];
-        } elseif (!in_array($key, $get_array) && !in_array($key, $post_array)) {
-            return $default;
+        } else if ((!in_array($key, $post_array) && !in_array($key, $get_array))) {
+            return $default . " doesn't have $key";
         }
     }
 

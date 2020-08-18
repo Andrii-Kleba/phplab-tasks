@@ -15,8 +15,11 @@ require_once 'Request.php';
 </head>
 <body>
 <?php
+$_POST['person'] = 323;
+$_POST['cool'] = 'COOL';
 $request = new Request($_GET, $_POST);
-$request->get('name');
+$request->get('cool');
+
 ?>
 </body>
 </html>

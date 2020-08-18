@@ -4,11 +4,13 @@ class Request
 {
     public array $query;
     public array $request;
+    public array $server;
 
-    public function __construct(array $query = [], array $request = [])
+    public function __construct(array $query = [], array $request = [], ?array $server)
     {
         $this->query = $query;
         $this->request = $request;
+        $this->server = $server;
     }
 
     public function query(string $key, $default = null): string
@@ -58,4 +60,18 @@ class Request
     {
         echo in_array($key, array_keys($this->query)) || in_array($key, array_keys($this->request)) ? true : false;
     }
+
+    public function ip(): string
+    {
+        if (!empty($this->server['HTTP_CLIENT_IP'])) {
+            $ip = $this->server['HTTP_CLIENT_IP'];
+        } else if
+        (!empty($this->server['HTTP_X_FORWARDED_FOR'])) {
+            $ip = $this->server['HTTP_X_FORWARDED_FOR'];
+        } else {
+            $ip = $this->server['REMOTE_ADDR'];
+        }
+        echo $ip;
+    }
+
 }

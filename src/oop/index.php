@@ -17,9 +17,8 @@ require_once 'Request.php';
 <?php
 $_POST['lala'] = 323;
 $_POST['cool'] = 'COOL';
-$request = new Request($_GET, $_POST);
-$request->has('lala');
-
+$request = new Request($_GET, $_POST, $_SERVER);
+$request->ip();
 ?>
 </body>
 </html>

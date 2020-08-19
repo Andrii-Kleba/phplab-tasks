@@ -1,9 +1,14 @@
 <?php
 
-namespace src\oop;
+require_once "iStorages.php";
 
 class Sessions implements iStorages
 {
+
+    public function __construct()
+    {
+    }
+
     public function all(array $only = []): array
     {
         // TODO: Implement all() method.

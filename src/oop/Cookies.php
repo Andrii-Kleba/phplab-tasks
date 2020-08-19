@@ -1,10 +1,10 @@
 <?php
 
-namespace src\oop;
-
+require_once "iStorages.php";
 
 class Cookies implements iStorages
 {
+
 
     public function all(array $only = []): array
     {

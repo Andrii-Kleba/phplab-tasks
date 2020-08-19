@@ -1,19 +1,22 @@
 <?php
 
-namespace src\oop;
-
+//namespace src\oop;
 
 class Request
 {
     public array $query;
     public array $request;
     public array $server;
+    public Cookies $cookies;
+    public Sessions $session;
 
-    public function __construct(array $query, array $request, ?array $server)
+    public function __construct(array $query, array $request, array $server, Sessions $session, Cookies $cookies)
     {
         $this->query = $query;
         $this->request = $request;
         $this->server = $server;
+        $this->session = $session;
+        $this->cookies = $cookies;
     }
 
     public function query(string $key, $default = null): string
@@ -44,7 +47,7 @@ class Request
         } else if (in_array($key, $post_array) && !in_array($key, $get_array)
             || (in_array($key, $post_array) && in_array($key, $get_array))) {
             return $this->request[$key];
-        } else if ((!in_array($key, $post_array) && !in_array($key, $get_array))) {
+        } else {
             return $default;
         }
     }
@@ -74,7 +77,7 @@ class Request
         } else {
             $ip = $this->server['REMOTE_ADDR'];
         }
-        echo $ip;
+        return $ip;
     }
 
     public function userAgent(): string

@@ -1,9 +1,5 @@
 <?php
 
-
-namespace src\oop;
-
-
 interface iStorages
 {
     public function all(array $only = []): array;

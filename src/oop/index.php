@@ -1,5 +1,9 @@
 <?php
-require_once 'Request.php';
+
+require_once "Request.php";
+require_once "Sessions.php";
+require_once "Cookies.php";
+
 ?>
 <!doctype html>
 <html lang="en">
@@ -12,9 +16,11 @@ require_once 'Request.php';
 </head>
 <body>
 <?php
-$_POST['lala'] = 323;
-$_POST['cool'] = 'COOL';
-$request = new Request($_GET, $_POST, $_SERVER);
+$_POST['cool'] = 'POst';
+$session = new Sessions();
+$cookies = new Cookies();
+$request = new Request($_GET, $_POST, $_SERVER, $session, $cookies);
+echo $request->get('sdsdds', 'both empty');
 ?>
 </body>
 </html>

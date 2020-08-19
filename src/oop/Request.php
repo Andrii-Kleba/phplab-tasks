@@ -9,7 +9,7 @@ class Request
     public Cookies $cookies;
     public Sessions $session;
 
-    public function __construct(array $query, array $request, array $server, ?Sessions $session, Cookies $cookies)
+    public function __construct(array $query, array $request, array $server, Sessions $session, Cookies $cookies)
     {
         $this->query = $query;
         $this->request = $request;

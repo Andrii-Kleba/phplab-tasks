@@ -6,9 +6,9 @@ interface iStorages
 
     public function get($key, $default = null): string;
 
-    public function set($key, $value): string;
+    public function set($key, $value);
 
-    public function has($key): string;
+    public function has($key): bool;
 
-    public function remove($key): string;
+    public function remove($key);
 }

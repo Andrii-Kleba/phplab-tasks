@@ -15,32 +15,36 @@ class Sessions implements iStorages
 
     public function all(array $only = []): array
     {
-        // TODO: Implement all() method.
+        if (!empty($only)) {
+            return array_merge($only, array_keys($this->session));
+        } else {
+            return $this->session;
+        }
     }
 
     public function get($key, $default = null): string
     {
-        // TODO: Implement get() method.
+        return in_array($key, array_keys($this->session)) ? $this->session[$key] : $default;
     }
 
-    public function set($key, $value): string
+    public function set($key, $value)
     {
-        // TODO: Implement set() method.
+        $this->session[$key] = $value;
     }
 
-    public function has($key): string
+    public function has($key): bool
     {
-        // TODO: Implement has() method.
+        return in_array($key, array_keys($this->session)) ? true : false;
     }
 
-    public function remove($key): string
+    public function remove($key)
     {
-        // TODO: Implement remove() method.
+        unset($this->session[$key]);
     }
 
     public function clear()
     {
-        // TODO: clear() method.
+        session_unset();
     }
 
 

@@ -24,21 +24,22 @@ class Cookies implements iStorages
 
     public function get($key, $default = null): string
     {
-        // TODO: Implement get() method.
+        return in_array($key, array_keys($this->cookies)) ? $this->cookies[$key] : $default;
     }
 
-    public function set($key, $value): string
+    public function set($key, $value)
     {
-        // TODO: Implement set() method.
+        $this->cookies[$key] = $value;
     }
 
-    public function has($key): string
+    public function has($key): bool
     {
-        // TODO: Implement has() method.
+        return in_array($key, array_keys($this->cookies)) ? true : false;
     }
 
-    public function remove($key): string
+    public function remove($key)
     {
-        // TODO: Implement remove() method.
+        unset($this->cookies[$key]);
+        setcookie($key, '', time() - 3600);
     }
 }

@@ -21,7 +21,7 @@ $request = new Request($_GET, $_POST, $_SERVER, $session, $cookies);
 $na = "Hello";
 setcookie('COOL', $na, time() + 3600);
 $arr = [1, 2];
-print_r($cookies->all($arr));
+echo $cookies->remove('COOL');
 ?>
 </body>
 </html>

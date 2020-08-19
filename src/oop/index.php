@@ -9,18 +9,19 @@ require_once "Cookies.php";
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>OOP</title>
 </head>
 <body>
 <?php
 $_POST['cool'] = 'POst';
-$session = new Sessions();
-$cookies = new Cookies();
+$_SESSION['test'] = 42;
+$session = new Sessions($_SESSION);
+$cookies = new Cookies($_COOKIE);
 $request = new Request($_GET, $_POST, $_SERVER, $session, $cookies);
-echo $request->get('sdsdds', 'both empty');
+$na = "Hello";
+setcookie('COOL', $na, time() + 3600);
+$arr = [1, 2];
+print_r($cookies->all($arr));
 ?>
 </body>
 </html>

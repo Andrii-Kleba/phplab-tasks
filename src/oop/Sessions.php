@@ -4,9 +4,13 @@ require_once "iStorages.php";
 
 class Sessions implements iStorages
 {
+   public array $session;
 
-    public function __construct()
+    public function __construct(array $session)
     {
+        session_start();
+        $this->session = $session;
+
     }
 
     public function all(array $only = []): array
@@ -38,5 +42,6 @@ class Sessions implements iStorages
     {
         // TODO: clear() method.
     }
+
 
 }

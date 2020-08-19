@@ -12,7 +12,7 @@ i.e.
 Create class Request with methods below:
  * `query($key, $default = null)` - returns $_GET parameter by $key and $default if does not exist
  * `post($key, $default = null)` - returns $_POST parameter by $key and $default if does not exist
- * `get($key, $default = null)` - returns $_GET or $_POST parameter by $key. If both are present - return $_POST. If both ate empty - return $fefault
+ * `get($key, $default = null)` - returns $_GET or $_POST parameter by $key. If both are present - return $_POST. If both ate empty - return $default
  * `all(array $only = [])` - returns all $_GET + $_POST parameters in the associative array. If $only is not empty - return only keys from $only parameter
  * `has($key)` - return true if $key exists in $_GET or $_POST
  * `ip()` - returns users IP

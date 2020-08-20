@@ -19,8 +19,8 @@ include "../class/Cookies.php";
 <section>
 
     <?php
-    $_SESSION['testa'] = 42;
-    $_COOKIE['cars'] = 'BMW';
+    $_SESSION['start_s'] = "S_start";
+    $_COOKIE['start_c'] = 'C_start';
     $session = new Sessions($_SESSION);
     $cookies = new Cookies($_COOKIE);
     $request = new Request($_GET, $_POST, $_SERVER, $session, $cookies);
@@ -33,11 +33,6 @@ include "../class/Cookies.php";
             </div>
         </div>
     </div>
-    <div class="container">
-        <button type="button" class="btn_s btn btn-secondary" onclick="javascript:window.location='../index.php'">GO
-            BACK
-        </button>
-    </div>
 
     <div class="container">
         <?php
@@ -47,10 +42,20 @@ include "../class/Cookies.php";
                 $currentMethod = $method;
             }
         }
-
-        echo $currentMethod;
         ?>
     </div>
+
+    <div class="container main">
+        <h1 class="name_method">Demonstrate method: <?= strtoupper($currentMethod) ?>() </h1>
+    </div>
+
+    <div class="container">
+        <button type="button" class="btn_s btn btn-secondary" onclick="javascript:window.location='../index.php'">GO
+            BACK
+        </button>
+    </div>
+
+
 </section>
 </body>
 </html>

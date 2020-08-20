@@ -1,3 +1,6 @@
+<?php
+include "../class/Cookies.php";
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -12,6 +15,12 @@
 </head>
 <body>
 <section>
+    <?php
+    $_SESSION['start_s'] = "S_start";
+    $_COOKIE['start_c'] = 'C_start';
+    $cookies = new Cookies($_COOKIE);
+    $cookie_methods = get_class_methods($cookies);
+    ?>
     <div class="container cookies_title">
         <div class="row">
             <div class="col-sm">
@@ -19,6 +28,21 @@
             </div>
         </div>
     </div>
+    <div class="container">
+        <?php
+        $currentMethod = '';
+        foreach ($cookie_methods as $method) {
+            if ($method === $_REQUEST['method']) {
+                $currentMethod = $method;
+            }
+        }
+        ?>
+    </div>
+
+    <div class="container main">
+        <h1 class="name_method">Demonstrate method: <?= strtoupper($currentMethod) ?>() </h1>
+    </div>
+
     <div class="container">
         <button type="button" class="btn_s btn btn-secondary" onclick="javascript:window.location='../index.php'">GO
             BACK

@@ -1,3 +1,6 @@
+<?php
+include "../class/Sessions.php";
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -12,6 +15,12 @@
 </head>
 <body>
 <section>
+    <?php
+    $_SESSION['start_s'] = "S_start";
+    $_COOKIE['start_c'] = 'C_start';
+    $session = new Sessions($_SESSION);
+    $session_methods = get_class_methods($session);
+    ?>
     <div class="container session_title">
         <div class="row">
             <div class="col-sm">
@@ -20,14 +29,26 @@
         </div>
     </div>
     <div class="container">
+        <?php
+        $currentMethod = '';
+        foreach ($session_methods as $method) {
+            if ($method === $_REQUEST['method']) {
+                $currentMethod = $method;
+            }
+        }
+        ?>
+    </div>
+
+    <div class="container main">
+        <h1 class="name_method">Demonstrate method: <?= strtoupper($currentMethod) ?>() </h1>
+    </div>
+
+    <div class="container">
         <button type="button" class="btn_s btn btn-secondary" onclick="javascript:window.location='../index.php'">GO
             BACK
         </button>
     </div>
 </section>
 
-<script type="text/JavaScript">
-
-</script>
 </body>
 </html>

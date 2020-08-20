@@ -22,9 +22,13 @@ require_once "Cookies.php";
     <?php
     $_POST['cool'] = 'POst';
     $_SESSION['test'] = 42;
+    $_COOKIE['car'] = 'BMW';
     $session = new Sessions($_SESSION);
     $cookies = new Cookies($_COOKIE);
     $request = new Request($_GET, $_POST, $_SERVER, $session, $cookies);
+    ?>
+
+    <?php
     $request_methods = get_class_methods($request);
     $session_methods = get_class_methods($session);
     $cookies_methods = get_class_methods($cookies);
@@ -52,25 +56,47 @@ require_once "Cookies.php";
             <div class="col-sm method-col">
                 <ol class="method">
                     <?php foreach ($request_methods as $method) : ?>
-                        <li><?= $method ?></li>
+                        <?php
+                        if ($method === '__construct') {
+                            continue;
+                        } else {
+                            echo "<li> $method </li>";
+                        }
+                        ?>
                     <?php endforeach; ?>
                 </ol>
             </div>
             <div class="col-sm method-col">
                 <ol class="method">
                     <?php foreach ($session_methods as $method) : ?>
-                        <li><?= $method ?></li>
+                        <?php
+                        if ($method === '__construct') {
+                            continue;
+                        } else {
+                            echo "<li> $method </li>";
+                        }
+                        ?>
                     <?php endforeach; ?>
                 </ol>
             </div>
             <div class="col-sm method-col">
                 <ol class="method">
                     <?php foreach ($cookies_methods as $method) : ?>
-                        <li><?= $method ?></li>
+                        <?php
+                        if ($method === '__construct') {
+                            continue;
+                        } else {
+                            echo "<li> $method </li>";
+                        }
+                        ?>
                     <?php endforeach; ?>
                 </ol>
             </div>
         </div>
+    </div>
+
+    <div class="container send">
+
     </div>
 </main>
 </body>

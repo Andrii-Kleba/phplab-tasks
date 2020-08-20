@@ -22,7 +22,7 @@ class Sessions implements iStorages
         }
     }
 
-    public function get($key, $default = null): string
+    public function get($key, $default = null)
     {
         return in_array($key, array_keys($this->session)) ? $this->session[$key] : $default;
     }

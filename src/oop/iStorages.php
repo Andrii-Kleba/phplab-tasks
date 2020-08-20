@@ -4,7 +4,7 @@ interface iStorages
 {
     public function all(array $only = []): array;
 
-    public function get($key, $default = null): string;
+    public function get($key, $default = null);
 
     public function set($key, $value);
 

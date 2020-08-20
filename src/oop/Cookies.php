@@ -22,7 +22,7 @@ class Cookies implements iStorages
         }
     }
 
-    public function get($key, $default = null): string
+    public function get($key, $default = null)
     {
         return in_array($key, array_keys($this->cookies)) ? $this->cookies[$key] : $default;
     }

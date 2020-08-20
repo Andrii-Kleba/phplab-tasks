@@ -36,7 +36,7 @@ class Request
         }
     }
 
-    public function get($key, $default = null): string
+    public function get($key, $default = null)
     {
         $get_array = array_keys($this->query);
         $post_array = array_keys($this->request);

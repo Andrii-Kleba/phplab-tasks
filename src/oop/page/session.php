@@ -10,7 +10,7 @@ include "../class/Sessions.php";
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
           integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-    <link rel="stylesheet" href="../style/session.css">
+    <link rel="stylesheet" href="../style/pages.css">
     <title>SESSION</title>
 </head>
 <body>
@@ -21,7 +21,7 @@ include "../class/Sessions.php";
     $session = new Sessions($_SESSION);
     $session_methods = get_class_methods($session);
     ?>
-    <div class="container session_title">
+    <div class="container title">
         <div class="row">
             <div class="col-sm">
                 Session
@@ -49,7 +49,6 @@ include "../class/Sessions.php";
             case 'all':
                 echo "<h2>TASK:</h2>";
                 echo "<p>Returns all \$_SESSION in the associative array. If \$only is not empty - return only keys from \$only parameter</p>";
-
                 break;
             case 'get':
                 echo "<h2>TASK:</h2>";

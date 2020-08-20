@@ -12,7 +12,7 @@ include "../class/Cookies.php";
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
           integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-    <link rel="stylesheet" href="../style/request.css">
+    <link rel="stylesheet" href="../style/pages.css">
     <title>REQUEST</title>
 </head>
 <body>
@@ -26,7 +26,7 @@ include "../class/Cookies.php";
     $request = new Request($_GET, $_POST, $_SERVER, $session, $cookies);
     $request_methods = get_class_methods($request);
     ?>
-    <div class="container request_title">
+    <div class="container title">
         <div class="row">
             <div class="col-sm">
                 Request

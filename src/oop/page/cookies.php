@@ -10,7 +10,7 @@ include "../class/Cookies.php";
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
           integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-    <link rel="stylesheet" href="../style/cookies.css">
+    <link rel="stylesheet" href="../style/pages.css">
     <title>COOKIES</title>
 </head>
 <body>
@@ -21,7 +21,7 @@ include "../class/Cookies.php";
     $cookies = new Cookies($_COOKIE);
     $cookie_methods = get_class_methods($cookies);
     ?>
-    <div class="container cookies_title">
+    <div class="container title">
         <div class="row">
             <div class="col-sm">
                 Cookies

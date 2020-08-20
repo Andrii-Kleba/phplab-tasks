@@ -19,7 +19,6 @@ require_once "class/Cookies.php";
 <body>
 <main>
     <?php
-    $_POST['cool'] = 'POst';
     $_SESSION['test'] = 42;
     $_COOKIE['car'] = 'BMW';
     $session = new Sessions($_SESSION);
@@ -54,48 +53,39 @@ require_once "class/Cookies.php";
         <div class="row">
             <div class="col-sm method-col">
                 <ol class="method">
-                    <?php foreach ($request_methods as $method) : ?>
-                        <?php
+                    <?php foreach ($request_methods as $method)
                         if ($method === '__construct') {
                             continue;
                         } else {
-                            echo "<a href='page/request.php' class='link_s'><li> $method </li></a>";
+                            echo "<a href='page/request.php?method=$method' class='link_s'><li> $method </li></a>";
                         }
-                        ?>
-                    <?php endforeach; ?>
+
+                    ?>
                 </ol>
             </div>
             <div class="col-sm method-col">
                 <ol class="method">
-                    <?php foreach ($session_methods as $method) : ?>
-                        <?php
+                    <?php foreach ($session_methods as $method)
                         if ($method === '__construct') {
                             continue;
                         } else {
-                            echo "<a href='page/session.php' class='link_s'><li> $method </li></a>";
+                            echo "<a href='page/session.php?method=$method' class='link_s'><li> $method </li></a>";
                         }
-                        ?>
-                    <?php endforeach; ?>
+                    ?>
                 </ol>
             </div>
             <div class="col-sm method-col">
                 <ol class="method">
-                    <?php foreach ($cookies_methods as $method) : ?>
-                        <?php
+                    <?php foreach ($cookies_methods as $method)
                         if ($method === '__construct') {
                             continue;
                         } else {
-                            echo "<a href='page/cookies.php' class='link_s'><li> $method </li></a>";
+                            echo "<a href='page/cookies.php?method=$method' class='link_s'><li> $method </li></a>";
                         }
-                        ?>
-                    <?php endforeach; ?>
+                    ?>
                 </ol>
             </div>
         </div>
-    </div>
-
-    <div class="container send" id="view">
-
     </div>
 </main>
 </body>

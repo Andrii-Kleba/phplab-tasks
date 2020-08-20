@@ -1,3 +1,8 @@
+<?php
+include "../class/Request.php";
+include "../class/Sessions.php";
+include "../class/Cookies.php";
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -12,6 +17,15 @@
 </head>
 <body>
 <section>
+
+    <?php
+    $_SESSION['testa'] = 42;
+    $_COOKIE['cars'] = 'BMW';
+    $session = new Sessions($_SESSION);
+    $cookies = new Cookies($_COOKIE);
+    $request = new Request($_GET, $_POST, $_SERVER, $session, $cookies);
+    $request_methods = get_class_methods($request);
+    ?>
     <div class="container request_title">
         <div class="row">
             <div class="col-sm">
@@ -23,6 +37,19 @@
         <button type="button" class="btn_s btn btn-secondary" onclick="javascript:window.location='../index.php'">GO
             BACK
         </button>
+    </div>
+
+    <div class="container">
+        <?php
+        $currentMethod = '';
+        foreach ($request_methods as $method) {
+            if ($method === $_REQUEST['method']) {
+                $currentMethod = $method;
+            }
+        }
+
+        echo $currentMethod;
+        ?>
     </div>
 </section>
 </body>

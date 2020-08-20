@@ -1,6 +1,6 @@
 <?php
 
-require_once "interface/iStorages.php";
+require_once "iStorages.php";
 
 class Cookies implements iStorages
 {

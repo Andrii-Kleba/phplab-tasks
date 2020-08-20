@@ -39,8 +39,22 @@
 
 ol {
     list-style: none;
-    color: white;
-    font-size: 17px;
+
+}
+
+.link_s {
+    text-decoration: none;
+    color: #fff
+}
+
+.link_s:hover {
+    text-decoration: none;
+    color: #2b341a;
+    transition-delay: 0.1s;
+}
+
+.link_s:active {
+    opacity: 0.9;
 }
 
 /*start______________ SEND METHOD POST OR GET BLOCK*/

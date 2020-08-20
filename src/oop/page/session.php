@@ -44,6 +44,40 @@ include "../class/Sessions.php";
     </div>
 
     <div class="container">
+        <?php
+        switch ($currentMethod):
+            case 'all':
+                echo "<h2>TASK:</h2>";
+                echo "<p>Returns all \$_SESSION in the associative array. If \$only is not empty - return only keys from \$only parameter</p>";
+
+                break;
+            case 'get':
+                echo "<h2>TASK:</h2>";
+                echo "<p>Returns \$_SESSION value by key and \$default if key does not exist</p>";
+                break;
+            case 'set':
+                echo "<h2>TASK:</h2>";
+                echo "<p>Sets data to session</p>";
+                break;
+            case 'has':
+                echo "<h2>TASK:</h2>";
+                echo "<p>Return true if \$key exists in \$_SESSION</p>";
+                break;
+            case 'remove':
+                echo "<h2>TASK:</h2>";
+                echo "<p>Removes session data by name</p>";
+                break;
+            case 'clear':
+                echo "<h2>TASK:</h2>";
+                echo "<p>Clears the session</p>";
+                break;
+            default:
+                echo "This method is undefined";
+        endswitch;
+        ?>
+    </div>
+
+    <div class="container">
         <button type="button" class="btn_s btn btn-secondary" onclick="javascript:window.location='../index.php'">GO
             BACK
         </button>

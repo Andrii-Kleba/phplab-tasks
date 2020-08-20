@@ -59,7 +59,7 @@ require_once "class/Cookies.php";
                         if ($method === '__construct') {
                             continue;
                         } else {
-                            echo "<a href='#' class='link_s'><li> $method </li></a>";
+                            echo "<a href='page/request.php' class='link_s'><li> $method </li></a>";
                         }
                         ?>
                     <?php endforeach; ?>
@@ -72,7 +72,7 @@ require_once "class/Cookies.php";
                         if ($method === '__construct') {
                             continue;
                         } else {
-                            echo "<a href='#' class='link_s'><li> $method </li></a>";
+                            echo "<a href='page/session.php' class='link_s'><li> $method </li></a>";
                         }
                         ?>
                     <?php endforeach; ?>
@@ -85,7 +85,7 @@ require_once "class/Cookies.php";
                         if ($method === '__construct') {
                             continue;
                         } else {
-                            echo "<a href='#' class='link_s'><li> $method </li></a>";
+                            echo "<a href='page/cookies.php' class='link_s'><li> $method </li></a>";
                         }
                         ?>
                     <?php endforeach; ?>

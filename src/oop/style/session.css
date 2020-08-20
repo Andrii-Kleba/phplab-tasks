@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+.session_title {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    padding: 20px 20px;
+    background-color: #76CDD8;
+    font-size: 18px;
+    color: #fff;
+    font-family: 'Press Start 2P', cursive;
+    text-align: center;
+}
+
+.btn_s {
+    margin: 20px -15px 10px;
+    width: 150px;
+}

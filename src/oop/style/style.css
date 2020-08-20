@@ -50,7 +50,7 @@ ol {
 .link_s:hover {
     text-decoration: none;
     color: #2b341a;
-    transition-delay: 0.1s;
+    transition-delay: 0.3ms;
 }
 
 .link_s:active {

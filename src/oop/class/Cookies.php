@@ -5,7 +5,7 @@ require_once "iStorages.php";
 class Cookies implements iStorages
 {
 
-    public array $cookies;
+    private array $cookies;
 
     public function __construct(array $cookies)
     {

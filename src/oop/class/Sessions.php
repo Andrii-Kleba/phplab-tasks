@@ -4,7 +4,7 @@ require_once "iStorages.php";
 
 class Sessions implements iStorages
 {
-   public array $session;
+   private array $session;
 
     public function __construct(array $session)
     {

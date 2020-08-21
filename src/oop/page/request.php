@@ -25,6 +25,8 @@ include "../class/Cookies.php";
     $cookies = new Cookies($_COOKIE);
     $request = new Request($_GET, $_POST, $_SERVER, $session, $cookies);
     $request_methods = get_class_methods($request);
+    $request->query['param'] = 'parameter get';
+    $request->request['postParam'] = 'parameter post';
     ?>
     <div class="container title">
         <div class="row">
@@ -50,41 +52,56 @@ include "../class/Cookies.php";
     </div>
 
     <div class="container">
-        <?php
-        $title = "<h2>&#9654; TASK:</h2>";
-        switch ($currentMethod):
-            case 'query':
-                echo $title;
-                echo "<p>Returns \$_GET parameter by \$key and \$default if does not exist</p>";
-                break;
-            case 'post':
-                echo $title;
-                echo "<p>Returns \$_POST parameter by \$key and \$default if does not exist</p>";
-                break;
-            case 'get':
-                echo $title;
-                echo "<p>Returns \$_GET or \$_POST parameter by \$key. If both are present - return \$_POST. If both ate empty - return \$default</p>";
-                break;
-            case 'all':
-                echo $title;
-                echo "<p>Returns all \$_GET + \$_POST parameters in the associative array. If \$only is not empty - return only keys from \$only parameter</p>";
-                break;
-            case 'has':
-                echo $title;
-                echo "<p>Return true if \$key exists in \$_GET or \$_POST</p>";
-                break;
-            case 'ip':
-                echo $title;
-                echo "<p>Returns users IP</p>";
-                break;
-            case 'userAgent';
-                echo $title;
-                echo "<p>Returns users browser User Agent</p>";
-                break;
-            default:
-                echo "This method is undefined";
-        endswitch;
-        ?>
+        <div class="row">
+            <div class="col-sm"> <?php
+                $title = "<h2>&#9654; TASK:</h2>";
+                switch ($currentMethod):
+                    case 'query':
+                        echo $title;
+                        echo "<p>Returns \$_GET parameter by \$key and \$default if does not exist</p>";
+                        echo "<br>";
+                        echo "Your parameter => {$request->query('param')}";
+                        break;
+                    case 'post':
+                        echo $title;
+                        echo "<p>Returns \$_POST parameter by \$key and \$default if does not exist</p>";
+                        echo "Your parameter => {$request->post('postParam')}";
+                        break;
+                    case 'get':
+                        echo $title;
+                        echo "<p>Returns \$_GET or \$_POST parameter by \$key. If both are present - return \$_POST. If both ate empty - return \$default</p>";
+                        echo "<br>";
+                        echo "Your param = {$request->get('postParam', 'default')}";
+                        break;
+                    case 'all':
+                        echo $title;
+                        echo "<p>Returns all \$_GET + \$_POST parameters in the associative array. If \$only is not empty - return only keys from \$only parameter</p>";
+                        echo "<br>";
+                        print_r([$request->all()]);
+                        break;
+                    case 'has':
+                        echo $title;
+                        echo "<p>Return true if \$key exists in \$_GET or \$_POST</p>";
+                        echo "<br>";
+                        echo "{$request->has('param')}";
+                        break;
+                    case 'ip':
+                        echo $title;
+                        echo "<p>Returns users IP</p>";
+                        echo "<br>";
+                        echo "Your ip = {$request->ip()}";
+                        break;
+                    case 'userAgent';
+                        echo $title;
+                        echo "<p>Returns users browser User Agent</p>";
+                        echo "<br>";
+                        echo "User Agent = {$request->userAgent()}";
+                        break;
+                    default:
+                        echo "This method is undefined";
+                endswitch;
+                ?></div>
+        </div>
     </div>
 
     <div class="container">
@@ -92,8 +109,6 @@ include "../class/Cookies.php";
             BACK
         </button>
     </div>
-
-
 </section>
 </body>
 </html>

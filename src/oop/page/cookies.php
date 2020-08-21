@@ -49,22 +49,34 @@ include "../class/Cookies.php";
             case 'all':
                 echo $title;
                 echo "<p>Returns all \$_COOKIES in the associative array. If \$only is not empty - return only keys from \$only parameter</p>";
+                echo "<br>";
+                print_r($cookies->all());
                 break;
             case 'get':
                 echo $title;
                 echo "<p>Returns \$_COOKIE value by key and \$default if key does not exist</p>";
+                echo "<br>";
+                echo "{$cookies->get('start_c', 'not found')}";
                 break;
             case 'set':
                 echo $title;
                 echo "<p>Sets cookie</p>";
+                echo "<br>";
+                echo "{$cookies->set('Cookie', 'set')}";
+                echo "Success set";
                 break;
             case 'has':
                 echo $title;
                 echo "<p>Return true if \$key exists in \$_COOKIES</p>";
+                echo "<br>";
+                echo "{$cookies->has('start_s')}";
                 break;
             case 'remove':
                 echo $title;
                 echo "<p>Removes cookie by name</p>";
+                echo "<br>";
+                echo "{$cookies->remove('start_s')}";
+                echo "REMOVE Cookie by key";
                 break;
             default:
                 echo "This method is undefined";

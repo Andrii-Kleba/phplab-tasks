@@ -50,26 +50,43 @@ include "../class/Sessions.php";
             case 'all':
                 echo $title;
                 echo "<p>Returns all \$_SESSION in the associative array. If \$only is not empty - return only keys from \$only parameter</p>";
+                echo "<br>";
+                print_r($session->all());
                 break;
             case 'get':
                 echo $title;
                 echo "<p>Returns \$_SESSION value by key and \$default if key does not exist</p>";
+                echo "<br>";
+                echo "{$session->get('start_s')}";
                 break;
             case 'set':
                 echo $title;
                 echo "<p>Sets data to session</p>";
+                echo "<br>";
+                echo "{$session->set('Session', 'success')}";
+                echo "SUCCESS SET SESSION";
                 break;
             case 'has':
                 echo $title;
                 echo "<p>Return true if \$key exists in \$_SESSION</p>";
+                echo "<br>";
+                $session->set('Session', 'success');
+                echo "{$session->has('Session')}";
                 break;
             case 'remove':
                 echo $title;
                 echo "<p>Removes session data by name</p>";
+                echo "<br>";
+                $session->set('Session', 'success');
+                echo "{$session->remove('Session')}";
+                echo "success remove session by key";
                 break;
             case 'clear':
                 echo $title;
                 echo "<p>Clears the session</p>";
+                echo "<br>";
+                $session->clear();
+                echo "CLEAR SESSION";
                 break;
             default:
                 echo "This method is undefined";

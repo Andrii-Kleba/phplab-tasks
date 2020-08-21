@@ -29,7 +29,7 @@ class Sessions implements iStorages
 
     public function set($key, $value)
     {
-        $this->session[$key] = $value;
+      return $this->session[$key] = $value;
     }
 
     public function has($key): bool

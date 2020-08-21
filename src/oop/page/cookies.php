@@ -40,29 +40,30 @@ include "../class/Cookies.php";
     </div>
 
     <div class="container main">
-        <h1 class="name_method">Demonstrate method: <?= strtoupper($currentMethod) ?>() </h1>
+        <div class="name_method">Demonstrate method: <h1><?= strtoupper($currentMethod) ?></h1></div>
     </div>
     <div class="container">
         <?php
+        $title = "<h2>&#9654; TASK:</h2>";
         switch ($currentMethod):
             case 'all':
-                echo "<h2>TASK:</h2>";
+                echo $title;
                 echo "<p>Returns all \$_COOKIES in the associative array. If \$only is not empty - return only keys from \$only parameter</p>";
                 break;
             case 'get':
-                echo "<h2>TASK:</h2>";
+                echo $title;
                 echo "<p>Returns \$_COOKIE value by key and \$default if key does not exist</p>";
                 break;
             case 'set':
-                echo "<h2>TASK:</h2>";
+                echo $title;
                 echo "<p>Sets cookie</p>";
                 break;
             case 'has':
-                echo "<h2>TASK:</h2>";
+                echo $title;
                 echo "<p>Return true if \$key exists in \$_COOKIES</p>";
                 break;
             case 'remove':
-                echo "<h2>TASK:</h2>";
+                echo $title;
                 echo "<p>Removes cookie by name</p>";
                 break;
             default:

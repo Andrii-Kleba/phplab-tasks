@@ -20,12 +20,21 @@
 .name_method {
     font-size: 20px;
     text-align: center;
+    background-color: #C2CE52;
+}
+
+h1 {
+    color: #fff;
+    font-size: 22px;
 }
 
 h2 {
-    background-color: green;
+    background-color: #C2CE52;
     text-align: center;
     max-width: 300px;
+}
+
+span  {
 }
 
 p {

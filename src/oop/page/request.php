@@ -46,38 +46,39 @@ include "../class/Cookies.php";
     </div>
 
     <div class="container main">
-        <h1 class="name_method">Demonstrate method: <?= strtoupper($currentMethod) ?>() </h1>
+        <div class="name_method">Demonstrate method: <h1><?= strtoupper($currentMethod) ?></h1></div>
     </div>
 
     <div class="container">
         <?php
+        $title = "<h2>&#9654; TASK:</h2>";
         switch ($currentMethod):
             case 'query':
-                echo "<h2>TASK:</h2>";
+                echo $title;
                 echo "<p>Returns \$_GET parameter by \$key and \$default if does not exist</p>";
                 break;
             case 'post':
-                echo "<h2>TASK:</h2>";
+                echo $title;
                 echo "<p>Returns \$_POST parameter by \$key and \$default if does not exist</p>";
                 break;
             case 'get':
-                echo "<h2>TASK:</h2>";
+                echo $title;
                 echo "<p>Returns \$_GET or \$_POST parameter by \$key. If both are present - return \$_POST. If both ate empty - return \$default</p>";
                 break;
             case 'all':
-                echo "<h2>TASK:</h2>";
+                echo $title;
                 echo "<p>Returns all \$_GET + \$_POST parameters in the associative array. If \$only is not empty - return only keys from \$only parameter</p>";
                 break;
             case 'has':
-                echo "<h2>TASK:</h2>";
+                echo $title;
                 echo "<p>Return true if \$key exists in \$_GET or \$_POST</p>";
                 break;
             case 'ip':
-                echo "<h2>TASK:</h2>";
+                echo $title;
                 echo "<p>Returns users IP</p>";
                 break;
             case 'userAgent';
-                echo "<h2>TASK:</h2>";
+                echo $title;
                 echo "<p>Returns users browser User Agent</p>";
                 break;
             default:

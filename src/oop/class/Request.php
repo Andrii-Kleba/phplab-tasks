@@ -3,9 +3,9 @@
 
 class Request
 {
-    private array $query;
-    private array $request;
-    private array $server;
+    public array $query;
+    public array $request;
+    public array $server;
     public Cookies $cookies;
     public Sessions $session;
 

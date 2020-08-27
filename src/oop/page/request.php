@@ -53,7 +53,7 @@ include "../class/PageBuilder.php";
     <div class="container">
         <div class="row">
             <div class="col-sm"> <?php
-                $title = "<h2>&#9654; TASK:</h2>";
+                $title = PageBuilder::TITLE_TASK;
                 switch ($currentMethod):
                     case 'query':
                         echo $title;

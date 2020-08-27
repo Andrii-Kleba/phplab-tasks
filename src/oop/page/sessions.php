@@ -44,7 +44,7 @@ include "../class/PageBuilder.php";
 
     <div class="container">
         <?php
-        $title = "<h2>&#9654; TASK:</h2>";
+        $title = PageBuilder::TITLE_TASK;
         switch ($currentMethod):
             case 'all':
                 echo $title;

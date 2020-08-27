@@ -2,6 +2,7 @@
 
 class PageBuilder
 {
+    const TITLE_TASK = "<h2>&#9654; TASK:</h2>";
     private array $request;
 
     public function __construct(?array $request)

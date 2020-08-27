@@ -43,7 +43,7 @@ include "../class/PageBuilder.php";
     </div>
     <div class="container">
         <?php
-        $title = "<h2>&#9654; TASK:</h2>";
+        $title = PageBuilder::TITLE_TASK;
         switch ($currentMethod):
             case 'all':
                 echo $title;
@@ -61,7 +61,7 @@ include "../class/PageBuilder.php";
                 echo $title;
                 echo "<p>Sets cookie</p>";
                 echo "<br>";
-                echo "{$cookies->set('Cookie', 'set')}";
+                $cookies->set('Cookie', 'set');
                 echo "Success set";
                 break;
             case 'has':
@@ -74,7 +74,7 @@ include "../class/PageBuilder.php";
                 echo $title;
                 echo "<p>Removes cookie by name</p>";
                 echo "<br>";
-                echo "{$cookies->remove('start_s')}";
+                $cookies->remove('start_s');
                 echo "REMOVE Cookie by key";
                 break;
             default:

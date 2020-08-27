@@ -25,6 +25,10 @@ require_once "class/PageBuilder.php";
     $session = new Sessions($_SESSION);
     $cookies = new Cookies($_COOKIE);
     $request = new Request($_GET, $_POST, $_SERVER, $session, $cookies);
+
+    $array_object[] = $request;
+    $array_object[] = $session;
+    $array_object[] = $cookies;
     ?>
     <div class="container headers">
         <div class="row">
@@ -46,27 +50,13 @@ require_once "class/PageBuilder.php";
 
     <div class="container title">
         <div class="row">
-            <div class="col-sm method-col">
-                <ol class="method">
-                    <?php
-                    PageBuilder::buildAllClassMethod($request);
-                    ?>
-                </ol>
-            </div>
-            <div class="col-sm method-col">
-                <ol class="method">
-                    <?php
-                    PageBuilder::buildAllClassMethod($session);
-                    ?>
-                </ol>
-            </div>
-            <div class="col-sm method-col">
-                <ol class="method">
-                    <?php
-                    PageBuilder::buildAllClassMethod($cookies);
-                    ?>
-                </ol>
-            </div>
+            <?php foreach ($array_object as $object): ?>
+                <div class="col-sm method-col">
+                    <ol class="method">
+                        <?php PageBuilder::buildAllClassMethod($object); ?>
+                    </ol>
+                </div>
+            <?php endforeach ?>
         </div>
     </div>
 </main>

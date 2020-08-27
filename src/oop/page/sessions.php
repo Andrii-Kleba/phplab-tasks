@@ -62,7 +62,7 @@ include "../class/PageBuilder.php";
                 echo $title;
                 echo "<p>Sets data to session</p>";
                 echo "<br>";
-                echo "{$session->set('Session', 'success')}";
+                echo "{$session->set('Session', 'success')}" . PHP_EOL;
                 echo "SUCCESS SET SESSION";
                 break;
             case 'has':

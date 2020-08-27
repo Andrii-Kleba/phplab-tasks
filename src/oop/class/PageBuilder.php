@@ -28,14 +28,16 @@ class PageBuilder
         return strtoupper($method);
     }
 
-    public function buildAllClassMethod($object)
+    public function buildAllClassMethod($object): void
     {
         $methods = get_class_methods($object);
+        $pageName = strtolower(get_class($object));
+
         foreach ($methods as $method)
             if ($method === '__construct') {
                 continue;
             } else {
-                echo "<a href='page/request.php?method=$method' class='link_s'><li> $method </li></a>";
+                echo "<a href='page/$pageName.php?method=$method' class='link_s'><li> $method </li></a>";
             }
     }
 }

@@ -1,5 +1,6 @@
 <?php
 include "../class/Cookies.php";
+include "../class/PageBuilder.php";
 ?>
 <!doctype html>
 <html lang="en">
@@ -19,7 +20,7 @@ include "../class/Cookies.php";
     $_SESSION['start_s'] = "S_start";
     $_COOKIE['start_c'] = 'C_start';
     $cookies = new Cookies($_COOKIE);
-    $cookie_methods = get_class_methods($cookies);
+    $pageBuilder = new PageBuilder($_REQUEST);
     ?>
     <div class="container title">
         <div class="row">
@@ -30,17 +31,15 @@ include "../class/Cookies.php";
     </div>
     <div class="container">
         <?php
-        $currentMethod = '';
-        foreach ($cookie_methods as $method) {
-            if ($method === $_REQUEST['method']) {
-                $currentMethod = $method;
-            }
-        }
+        $currentMethod = $pageBuilder->getCurrentMethod($cookies);
         ?>
     </div>
 
     <div class="container main">
-        <div class="name_method">Demonstrate method: <h1><?= strtoupper($currentMethod) ?></h1></div>
+        <div class="name_method">
+            Demonstrate method:
+            <h1><?= $pageBuilder->toUpperCaseMethod($currentMethod); ?></h1>
+        </div>
     </div>
     <div class="container">
         <?php

@@ -2,6 +2,7 @@
 include "../class/Request.php";
 include "../class/Sessions.php";
 include "../class/Cookies.php";
+include "../class/PageBuilder.php";
 ?>
 <!doctype html>
 <html lang="en">
@@ -24,7 +25,7 @@ include "../class/Cookies.php";
     $session = new Sessions($_SESSION);
     $cookies = new Cookies($_COOKIE);
     $request = new Request($_GET, $_POST, $_SERVER, $session, $cookies);
-    $request_methods = get_class_methods($request);
+    $pageBuilder = new PageBuilder($_REQUEST);
     $request->query['param'] = 'parameter get';
     $request->request['postParam'] = 'parameter post';
     ?>
@@ -38,17 +39,15 @@ include "../class/Cookies.php";
 
     <div class="container">
         <?php
-        $currentMethod = '';
-        foreach ($request_methods as $method) {
-            if ($method === $_REQUEST['method']) {
-                $currentMethod = $method;
-            }
-        }
+        $currentMethod = $pageBuilder->getCurrentMethod($request);
         ?>
     </div>
 
     <div class="container main">
-        <div class="name_method">Demonstrate method: <h1><?= strtoupper($currentMethod) ?></h1></div>
+        <div class="name_method">
+            Demonstrate method:
+            <h1><?= $pageBuilder->toUpperCaseMethod($currentMethod); ?></h1>
+        </div>
     </div>
 
     <div class="container">

@@ -28,7 +28,7 @@ class PageBuilder
         return strtoupper($method);
     }
 
-    public function buildAllClassMethod($object): void
+    public static function buildAllClassMethod($object): void
     {
         $methods = get_class_methods($object);
         $pageName = strtolower(get_class($object));

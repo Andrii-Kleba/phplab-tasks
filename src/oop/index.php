@@ -25,7 +25,6 @@ require_once "class/PageBuilder.php";
     $session = new Sessions($_SESSION);
     $cookies = new Cookies($_COOKIE);
     $request = new Request($_GET, $_POST, $_SERVER, $session, $cookies);
-    $pageBuilder = new PageBuilder($_REQUEST);
     ?>
     <div class="container headers">
         <div class="row">
@@ -50,21 +49,21 @@ require_once "class/PageBuilder.php";
             <div class="col-sm method-col">
                 <ol class="method">
                     <?php
-                    $pageBuilder->buildAllClassMethod($request);
+                    PageBuilder::buildAllClassMethod($request);
                     ?>
                 </ol>
             </div>
             <div class="col-sm method-col">
                 <ol class="method">
                     <?php
-                    $pageBuilder->buildAllClassMethod($session);
+                    PageBuilder::buildAllClassMethod($session);
                     ?>
                 </ol>
             </div>
             <div class="col-sm method-col">
                 <ol class="method">
                     <?php
-                    $pageBuilder->buildAllClassMethod($cookies);
+                    PageBuilder::buildAllClassMethod($cookies);
                     ?>
                 </ol>
             </div>

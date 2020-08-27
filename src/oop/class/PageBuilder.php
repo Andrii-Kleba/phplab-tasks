@@ -4,7 +4,7 @@ class PageBuilder
 {
     private array $request;
 
-    public function __construct(array $request)
+    public function __construct(?array $request)
     {
         $this->request = $request;
     }
@@ -26,5 +26,16 @@ class PageBuilder
     public function toUpperCaseMethod($method): string
     {
         return strtoupper($method);
+    }
+
+    public function buildAllClassMethod($object)
+    {
+        $methods = get_class_methods($object);
+        foreach ($methods as $method)
+            if ($method === '__construct') {
+                continue;
+            } else {
+                echo "<a href='page/request.php?method=$method' class='link_s'><li> $method </li></a>";
+            }
     }
 }

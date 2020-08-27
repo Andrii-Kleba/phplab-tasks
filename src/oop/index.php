@@ -3,6 +3,7 @@
 require_once "class/Request.php";
 require_once "class/Sessions.php";
 require_once "class/Cookies.php";
+require_once "class/PageBuilder.php";
 
 ?>
 <!doctype html>
@@ -24,12 +25,7 @@ require_once "class/Cookies.php";
     $session = new Sessions($_SESSION);
     $cookies = new Cookies($_COOKIE);
     $request = new Request($_GET, $_POST, $_SERVER, $session, $cookies);
-    ?>
-
-    <?php
-    $request_methods = get_class_methods($request);
-    $session_methods = get_class_methods($session);
-    $cookies_methods = get_class_methods($cookies);
+    $pageBuilder = new PageBuilder($_REQUEST);
     ?>
     <div class="container headers">
         <div class="row">
@@ -53,35 +49,22 @@ require_once "class/Cookies.php";
         <div class="row">
             <div class="col-sm method-col">
                 <ol class="method">
-                    <?php foreach ($request_methods as $method)
-                        if ($method === '__construct') {
-                            continue;
-                        } else {
-                            echo "<a href='page/request.php?method=$method' class='link_s'><li> $method </li></a>";
-                        }
-
+                    <?php
+                    $pageBuilder->buildAllClassMethod($request);
                     ?>
                 </ol>
             </div>
             <div class="col-sm method-col">
                 <ol class="method">
-                    <?php foreach ($session_methods as $method)
-                        if ($method === '__construct') {
-                            continue;
-                        } else {
-                            echo "<a href='page/session.php?method=$method' class='link_s'><li> $method </li></a>";
-                        }
+                    <?php
+                    $pageBuilder->buildAllClassMethod($session);
                     ?>
                 </ol>
             </div>
             <div class="col-sm method-col">
                 <ol class="method">
-                    <?php foreach ($cookies_methods as $method)
-                        if ($method === '__construct') {
-                            continue;
-                        } else {
-                            echo "<a href='page/cookies.php?method=$method' class='link_s'><li> $method </li></a>";
-                        }
+                    <?php
+                    $pageBuilder->buildAllClassMethod($cookies);
                     ?>
                 </ol>
             </div>

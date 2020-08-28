@@ -3,6 +3,7 @@ include "../class/Request.php";
 include "../class/Sessions.php";
 include "../class/Cookies.php";
 include "../class/PageBuilder.php";
+include "../class/ControllerClassMethod.php";
 ?>
 <!doctype html>
 <html lang="en">
@@ -25,7 +26,7 @@ include "../class/PageBuilder.php";
     $session = new Sessions($_SESSION);
     $cookies = new Cookies($_COOKIE);
     $request = new Request($_GET, $_POST, $_SERVER, $session, $cookies);
-    $pageBuilder = new PageBuilder($_REQUEST);
+    $controllerMethod = new ControllerClassMethod($_REQUEST);
     $request->query['param'] = 'parameter get';
     $request->request['postParam'] = 'parameter post';
     ?>
@@ -39,14 +40,14 @@ include "../class/PageBuilder.php";
 
     <div class="container">
         <?php
-        $currentMethod = $pageBuilder->getCurrentMethod($request);
+        $currentMethod = $controllerMethod->getCurrentMethod($request);
         ?>
     </div>
 
     <div class="container main">
         <div class="name_method">
             Demonstrate method:
-            <h1><?= $pageBuilder->toUpperCaseMethod($currentMethod); ?></h1>
+            <h1><?= $controllerMethod->toUpperCaseMethod($currentMethod); ?></h1>
         </div>
     </div>
 

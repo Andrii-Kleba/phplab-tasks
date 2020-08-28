@@ -1,6 +1,7 @@
 <?php
 include "../class/Sessions.php";
 include "../class/PageBuilder.php";
+include "../class/ControllerClassMethod.php";
 ?>
 <!doctype html>
 <html lang="en">
@@ -20,7 +21,7 @@ include "../class/PageBuilder.php";
     $_SESSION['start_s'] = "S_start";
     $_COOKIE['start_c'] = 'C_start';
     $session = new Sessions($_SESSION);
-    $pageBuilder = new PageBuilder($_REQUEST);
+    $controllerMethod = new ControllerClassMethod($_REQUEST);
     ?>
     <div class="container title">
         <div class="row">
@@ -31,14 +32,14 @@ include "../class/PageBuilder.php";
     </div>
     <div class="container">
         <?php
-        $currentMethod = $pageBuilder->getCurrentMethod($session);
+        $currentMethod = $controllerMethod->getCurrentMethod($session);
         ?>
     </div>
 
     <div class="container main">
         <div class="name_method">
             Demonstrate method:
-            <h1><?= $pageBuilder->toUpperCaseMethod($currentMethod); ?></h1>
+            <h1><?= $controllerMethod->toUpperCaseMethod($currentMethod); ?></h1>
         </div>
     </div>
 

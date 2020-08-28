@@ -1,5 +1,6 @@
 <?php
 include "../class/Cookies.php";
+include "../class/ControllerClassMethod.php";
 include "../class/PageBuilder.php";
 ?>
 <!doctype html>
@@ -20,7 +21,7 @@ include "../class/PageBuilder.php";
     $_SESSION['start_s'] = "S_start";
     $_COOKIE['start_c'] = 'C_start';
     $cookies = new Cookies($_COOKIE);
-    $pageBuilder = new PageBuilder($_REQUEST);
+    $controllerMethod = new ControllerClassMethod($_REQUEST);
     ?>
     <div class="container title">
         <div class="row">
@@ -31,14 +32,14 @@ include "../class/PageBuilder.php";
     </div>
     <div class="container">
         <?php
-        $currentMethod = $pageBuilder->getCurrentMethod($cookies);
+        $currentMethod = $controllerMethod->getCurrentMethod($cookies);
         ?>
     </div>
 
     <div class="container main">
         <div class="name_method">
             Demonstrate method:
-            <h1><?= $pageBuilder->toUpperCaseMethod($currentMethod); ?></h1>
+            <h1><?= $controllerMethod->toUpperCaseMethod($currentMethod); ?></h1>
         </div>
     </div>
     <div class="container">

@@ -4,6 +4,7 @@ require_once "class/Request.php";
 require_once "class/Sessions.php";
 require_once "class/Cookies.php";
 require_once "class/PageBuilder.php";
+require_once "class/ControllerClassMethod.php";
 
 ?>
 <!doctype html>
@@ -25,6 +26,7 @@ require_once "class/PageBuilder.php";
     $session = new Sessions($_SESSION);
     $cookies = new Cookies($_COOKIE);
     $request = new Request($_GET, $_POST, $_SERVER, $session, $cookies);
+    $controllerMethodClass = new ControllerClassMethod($_REQUEST);
 
     $array_object[] = $request;
     $array_object[] = $session;
@@ -53,7 +55,7 @@ require_once "class/PageBuilder.php";
             <?php foreach ($array_object as $object): ?>
                 <div class="col-sm method-col">
                     <ol class="method">
-                        <?php PageBuilder::buildAllClassMethod($object); ?>
+                        <?php  PageBuilder::buildAllClassMethod($object, $controllerMethodClass); ?>
                     </ol>
                 </div>
             <?php endforeach ?>

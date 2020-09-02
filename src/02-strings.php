@@ -9,11 +9,11 @@
  */
 function snakeCaseToCamelCase(string $input): string
 {
-    $arraysStringDelimiter = explode("_", $input);
-    $camelCaseStr = $arraysStringDelimiter[0];
+    $arraysString = explode("_", $input);
+    $camelCaseStr = $arraysString[0];
     $i = 1;
-    while ($i < count($arraysStringDelimiter)) {
-        $camelCaseStr .= ucwords($arraysStringDelimiter[$i]);
+    while ($i < count($arraysString)) {
+        $camelCaseStr .= ucwords($arraysString[$i]);
         $i++;
     }
     return $camelCaseStr;
@@ -34,6 +34,7 @@ function mirrorMultibyteString(string $input): string
     for ($i = mb_strlen($input); $i >= 0; $i--) {
         $charRev .= mb_substr($input, $i, 1);
     }
+
     $arrStr = explode(" ", $charRev);
     for ($j = count($arrStr) - 1; $j >= 0; $j--) {
         $wordRev .= $arrStr[$j] . " ";
@@ -64,7 +65,7 @@ function getBrandName(string $noun)
     if (strtolower($charArrBrandName[0]) != strtolower(end($charArrBrandName))) {
         $res = implode($charArrBrandName);
         $resultBrandName .= ucfirst($res);
-    } elseif (strtolower($charArrBrandName[0]) == strtolower(end($charArrBrandName))) {
+    } else {
         $res = implode($charArrBrandName);
         $firstCharUpper = ucfirst($res);
         $splitStr = strstr($res, $charArrBrandName[1]);
